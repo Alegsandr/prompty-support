@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompty Support</title>
+  <meta name="description" content="Prompty support page with contact details and privacy policy link." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.08);
+      --panel-border: rgba(255,255,255,0.14);
+      --text: #f5f7fb;
+      --muted: #b9c2d0;
+      --accent: #5aa7ff;
+      --accent-2: #8a6dff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(90,167,255,0.28), transparent 35%),
+        radial-gradient(circle at top right, rgba(138,109,255,0.22), transparent 28%),
+        linear-gradient(180deg, #0b1020 0%, #121936 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .shell {
+      width: min(980px, 100%);
+      display: grid;
+      gap: 22px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+      border: 1px solid var(--panel-border);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(90,167,255,0.14), rgba(138,109,255,0.05) 55%, transparent 90%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      padding: 44px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(90,167,255,0.7);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      max-width: 720px;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .button {
+      text-decoration: none;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: transform .18s ease, opacity .18s ease, background .18s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 28px rgba(89, 122, 255, 0.25);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .info {
+      display: grid;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .info-row {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .info-label {
+      font-size: 13px;
+      color: #9ca8bc;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .info-value, .info-value a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .footer {
+      text-align: center;
+      color: #90a0b8;
+      font-size: 14px;
+      padding: 6px 8px 2px;
+    }
+
+    @media (max-width: 760px) {
+      .hero-inner { padding: 28px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 22px; }
+      .lead { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="badge"><span class="dot"></span>Official Prompty Support</div>
+        <h1>Need help with Prompty?</h1>
+        <p class="lead">
+          Prompty is a smart teleprompter for confident video recording and speaking. If you have questions,
+          feedback, or need help with the app, use the support contact below.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="mailto:support@prompty.app">Contact Support</a>
+          <a class="button secondary" href="https://drive.google.com/file/d/1NJtY0i67hvQEqBW43AolbJXf0ZGiPsIO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Support</h2>
+        <p>
+          For questions about features, subscriptions, recording, voice tracking, or any technical issues,
+          please reach out by email.
+        </p>
+        <div class="info">
+          <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value"><a href="mailto:desiouner@gmail.com">support@prompty.app</a></div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Response Time</div>
+            <div class="info-value">Usually within 24–48 hours</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Helpful Info</h2>
+        <ul class="list">
+          <li>Include your device model and iOS version when reporting an issue.</li>
+          <li>Describe what happened and the steps that led to the problem.</li>
+          <li>If relevant, mention whether the issue occurred during recording, scrolling, or voice tracking.</li>
+          <li>For billing questions, include the date of purchase and the subscription type.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="footer">© 2026 Prompty. All rights reserved.</p>
+  </main>
+</body>
+</html>
